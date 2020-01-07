@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_all_student"
+            android:icon="@drawable/user"
+            android:title="عرض كل الطلاب" />
+        <item
+            android:id="@+id/nav_all_superviser"
+            android:icon="@drawable/ic_directions_car_black_24dp"
+            android:title="عرض كل التراحيل" />
+        <item
+            android:id="@+id/nav_non_verified_student"
+            android:icon="@drawable/ic_warning_black_24dp"
+            android:title=" عرض الطلبة الغير مسجلين بتراحيل" />
+        <item
+            android:id="@+id/nav_verified_student"
+            android:icon="@drawable/ic_verified_user_black_24dp"
+            android:title=" عرض الطلبة المسجلين بتراحيل" />
+
+    </group>
+
+    <item android:title="Communicate">
+        <menu>
+            <item
+                android:id="@+id/nav_share"
+                android:icon="@drawable/ic_menu_share"
+                android:title="مشاركة التطبيق" />
+            <item
+                android:id="@+id/nav_call_us"
+                android:icon="@android:drawable/ic_menu_call"
+                android:title="اتصل بنا " />
+            <item
+                android:id="@+id/nav_aboutus"
+                android:icon="@drawable/ic_menu_send"
+                android:title="عنا" />
+
+            <item
+                android:id="@+id/nav_logout"
+                android:icon="@android:drawable/ic_menu_directions"
+                android:title="تسجيل خروج" />
+        </menu>
+    </item>
+
+</menu>
