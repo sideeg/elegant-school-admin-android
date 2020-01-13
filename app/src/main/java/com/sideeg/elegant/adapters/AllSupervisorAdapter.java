@@ -8,8 +8,8 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.sideeg.elegant.R;
-import com.sideeg.elegant.fragment.StudentDetails;
-import com.sideeg.elegant.model.StudentData;
+import com.sideeg.elegant.fragment.SupervisorDetialsFragment;
+import com.sideeg.elegant.model.SuperVisorData;
 
 import java.util.List;
 
@@ -21,10 +21,10 @@ import androidx.recyclerview.widget.RecyclerView;
 public class AllSupervisorAdapter extends RecyclerView.Adapter<AllSupervisorAdapter.ViewHolder> {
 
 
-    private List<StudentData> studentData;
+    private List<SuperVisorData> studentData;
     private Context context;
 
-    public AllSupervisorAdapter(List<StudentData> studentData, Context context) {
+    public AllSupervisorAdapter(List<SuperVisorData> studentData, Context context) {
         this.studentData = studentData;
         this.context=context;
     }
@@ -32,23 +32,24 @@ public class AllSupervisorAdapter extends RecyclerView.Adapter<AllSupervisorAdap
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
-        View view = LayoutInflater.from(context).inflate(R.layout.student_item, viewGroup, false);
+        View view = LayoutInflater.from(context).inflate(R.layout.supervisor_item, viewGroup, false);
 
         return new ViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, int i) {
-        viewHolder.studentName.setText(studentData.get(i).getStudentName());
-        viewHolder.studentSuperVisorName.setText(studentData.get(i).getStudentSupervisorName());
-        viewHolder.studentClassName.setText(studentData.get(i).getStudentClassName());
+        viewHolder.supervisorName.setText(studentData.get(i).getSupervisorName());
+        viewHolder.supervisorPhone.setText(studentData.get(i).getSupervisorPhone());
         viewHolder.layout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                FragmentActivity x = new FragmentActivity();
-                FragmentTransaction ft = x.getSupportFragmentManager().beginTransaction();
-                ft.replace(R.id.container, new StudentDetails());
+
+                FragmentTransaction ft = ((FragmentActivity) view.getContext()).getSupportFragmentManager().beginTransaction();
+                ft.replace(R.id.container, new SupervisorDetialsFragment());
                 ft.commit();
+
+
             }
         });
 
@@ -60,16 +61,14 @@ public class AllSupervisorAdapter extends RecyclerView.Adapter<AllSupervisorAdap
     }
 
     class ViewHolder extends RecyclerView.ViewHolder{
-         TextView studentName;
-         TextView studentClassName;
-         TextView studentSuperVisorName;
+         TextView supervisorName;
+         TextView supervisorPhone;
          LinearLayout layout;
          ViewHolder(@NonNull View itemView) {
             super(itemView);
-            studentClassName = itemView.findViewById(R.id.item_student_class);
-            studentName = itemView.findViewById(R.id.item_student_name);
-            studentSuperVisorName = itemView.findViewById(R.id.item_student_supervisor);
-            layout = itemView.findViewById(R.id.student_item_layout);
+            supervisorPhone = itemView.findViewById(R.id.item_supervisor_phone);
+            supervisorName = itemView.findViewById(R.id.item_supervisor_name);
+            layout = itemView.findViewById(R.id.supervisor_item_layout);
         }
     }
 }

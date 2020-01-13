@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.sideeg.elegant.R;
 import com.sideeg.elegant.adapters.AllStudentAdapter;
 import com.sideeg.elegant.model.StudentData;
@@ -15,6 +16,8 @@ import java.util.List;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -34,6 +37,16 @@ public class AllStudentFragment extends Fragment {
         layoutManager = new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(layoutManager);
         getList();
+
+        FloatingActionButton actionButton = root.findViewById(R.id.butoon_add_student);
+        actionButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                FragmentTransaction ft = ((FragmentActivity) view.getContext()).getSupportFragmentManager().beginTransaction();
+                ft.replace(R.id.container, new AddStudentFragment());
+                ft.commit();
+            }
+        });
         return root;
     }
 

@@ -10,11 +10,12 @@ import com.sideeg.elegant.R;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
-public class SupervisorDetials extends Fragment {
-
+public class AddSchoolFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        View root = inflater.inflate(R.layout.fragment_supervisor_details, container, false);
+        View root = inflater.inflate(R.layout.fragment_add_school, container, false);
+
+
         return root;
     }
 }

@@ -4,9 +4,9 @@ import androidx.annotation.NonNull;
 
 public class StudentData {
 
-   public String studentName;
-   public String studentClassName;
-   public String studentSupervisorName;
+   private String studentName;
+   private String studentClassName;
+   private String studentSupervisorName;
 
     public String getStudentName() {
         return studentName;

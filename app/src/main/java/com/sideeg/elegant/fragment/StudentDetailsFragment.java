@@ -10,7 +10,7 @@ import com.sideeg.elegant.R;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
-public class StudentDetails extends Fragment {
+public class StudentDetailsFragment extends Fragment {
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {

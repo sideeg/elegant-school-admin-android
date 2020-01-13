@@ -18,6 +18,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.util.Log;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
@@ -25,6 +26,7 @@ import com.google.android.material.navigation.NavigationView;
 import com.sideeg.elegant.R;
 import com.sideeg.elegant.fragment.AllStudentFragment;
 import com.sideeg.elegant.fragment.AllSuperViserFragment;
+import com.sideeg.elegant.fragment.FragmentAllSchool;
 import com.sideeg.elegant.fragment.SupStudentFragment;
 
 import java.io.File;
@@ -60,6 +62,16 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         //calling sync state is necessary or else your hamburger icon wont show up
         actionBarDrawerToggle.syncState();
+        Menu menu = navigationView.getMenu();
+        if (getIntent().getStringExtra("admin") != null) {
+
+            menu.removeItem(R.id.nav_all_student);
+            menu.removeItem(R.id.nav_all_superviser);
+            menu.removeItem(R.id.nav_non_verified_student);
+            menu.removeItem(R.id.nav_verified_student);
+            menu.add(12,125,100,"المدارس");
+        }
+
     }
 
 
@@ -77,7 +89,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         if (id == R.id.nav_aboutus) {
             return true;
 
-        }else if (id== R.id.nav_all_student){
+        }
+        else if (id == 125){
+            ft.replace(R.id.container, new FragmentAllSchool());
+            ft.commit();
+            return true;
+        } else if (id== R.id.nav_all_student){
             ft.replace(R.id.container, new AllStudentFragment());
             ft.commit();
             return true;

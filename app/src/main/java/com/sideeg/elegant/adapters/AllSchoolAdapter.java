@@ -1,17 +1,15 @@
 package com.sideeg.elegant.adapters;
 
 import android.content.Context;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-
 import com.sideeg.elegant.R;
-import com.sideeg.elegant.fragment.StudentDetailsFragment;
-import com.sideeg.elegant.model.StudentData;
+import com.sideeg.elegant.fragment.SchoolDitalsFragment;
+import com.sideeg.elegant.model.SchoolData;
 
 import java.util.List;
 
@@ -20,13 +18,13 @@ import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 
-public class AllStudentAdapter extends RecyclerView.Adapter<AllStudentAdapter.ViewHolder> {
+public class AllSchoolAdapter extends RecyclerView.Adapter<AllSchoolAdapter.ViewHolder> {
 
 
-    private List<StudentData> studentData;
+    private List<SchoolData> studentData;
     private Context context;
 
-    public AllStudentAdapter(List<StudentData> studentData, Context context) {
+    public AllSchoolAdapter(List<SchoolData> studentData, Context context) {
         this.studentData = studentData;
         this.context=context;
     }
@@ -34,21 +32,22 @@ public class AllStudentAdapter extends RecyclerView.Adapter<AllStudentAdapter.Vi
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
-        View view = LayoutInflater.from(context).inflate(R.layout.student_item, viewGroup, false);
+        View view = LayoutInflater.from(context).inflate(R.layout.school_item, viewGroup, false);
 
         return new ViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, int i) {
-        viewHolder.studentName.setText(studentData.get(i).getStudentName());
-        viewHolder.studentSuperVisorName.setText(studentData.get(i).getStudentSupervisorName());
-        viewHolder.studentClassName.setText(studentData.get(i).getStudentClassName());
+        viewHolder.mangerName.setText(studentData.get(i).getMangerName());
+        viewHolder.mangerPhone.setText(studentData.get(i).getMangerPhone());
+        viewHolder.schoolName.setText(studentData.get(i).getSchoolName());
+        viewHolder.mangerPassword.setText(studentData.get(i).getMangerPassowrd());
         viewHolder.layout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 FragmentTransaction ft =((FragmentActivity) view.getContext()).getSupportFragmentManager().beginTransaction();
-                ft.replace(R.id.container, new StudentDetailsFragment());
+                ft.replace(R.id.container, new SchoolDitalsFragment());
                 ft.commit();
             }
         });
@@ -61,16 +60,18 @@ public class AllStudentAdapter extends RecyclerView.Adapter<AllStudentAdapter.Vi
     }
 
     class ViewHolder extends RecyclerView.ViewHolder{
-         TextView studentName;
-         TextView studentClassName;
-         TextView studentSuperVisorName;
+        private final TextView mangerPassword;
+        TextView mangerName;
+         TextView schoolName;
+         TextView mangerPhone;
          LinearLayout layout;
          ViewHolder(@NonNull View itemView) {
             super(itemView);
-            studentClassName = itemView.findViewById(R.id.item_student_class);
-            studentName = itemView.findViewById(R.id.item_student_name);
-            studentSuperVisorName = itemView.findViewById(R.id.item_student_supervisor);
-            layout = itemView.findViewById(R.id.student_item_layout);
+            schoolName = itemView.findViewById(R.id.item_school_name);
+            mangerName = itemView.findViewById(R.id.item_manger_name);
+            mangerPhone = itemView.findViewById(R.id.item_manger_phone);
+            mangerPassword = itemView.findViewById(R.id.item_manger_password);
+            layout = itemView.findViewById(R.id.school_item_layout);
         }
     }
 }
