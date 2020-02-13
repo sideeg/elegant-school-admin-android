@@ -88,7 +88,7 @@
                 android:textSize="16dp"
                 android:textColor="#fff"
                 android:gravity="center"
-                android:onClick="sign"
+
                 android:layout_marginLeft="40dp"
                 android:layout_marginRight="40dp"
                 android:padding="16dp"

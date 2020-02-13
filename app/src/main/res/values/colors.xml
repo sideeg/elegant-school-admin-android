@@ -7,4 +7,19 @@
 
     <color name="black">#000000</color>
     <color name="white">#ffffff</color>
+
+    <color name="orange_gradient_start">#e98723</color>
+    <color name="orange_gradient_end">#fa7501</color>
+    <color name="yellow">#b7820c</color>
+
+    <color name="yellow_light">#fbb51c</color>
+
+    <color name="DefaultButton">#242021</color>
+    <color name="yellow_seek">#ffd112</color>
+    <color name="Cerulean">#08B4E8</color>
+    <color name="Cerulean2">#FF0892E8</color>
+    <color name="Cranberry">#E1508F</color>
+    <color name="Cranberry2">#a93969</color>
+    <color name="dark_blue">#FF006CB1</color>
+    <color name="light_blue">#FF2670C0</color>
 </resources>

@@ -7,9 +7,14 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.sideeg.elegant.NetWorkApis.ApiClient;
+import com.sideeg.elegant.NetWorkApis.NetWorkApis;
 import com.sideeg.elegant.R;
 import com.sideeg.elegant.adapters.AllStudentAdapter;
 import com.sideeg.elegant.model.StudentData;
+import com.sideeg.elegant.model.getStudentResponse;
+import com.sideeg.elegant.utiltiy.SessionManger;
+import com.sideeg.elegant.utiltiy.Utility;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,10 +25,14 @@ import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class AllStudentFragment extends Fragment {
 
 
+    private static final String TAG = "AllStudentFragment";
     private RecyclerView recyclerView;
     private LinearLayoutManager layoutManager;
     private AllStudentAdapter mAdapter;
@@ -51,54 +60,53 @@ public class AllStudentFragment extends Fragment {
     }
 
     private void getList() {
-        List<StudentData> studends = new ArrayList();
-        studends.add(new StudentData("علي احمد", "الخامس عمر", "هند جعفر"));
-        studends.add(new StudentData(" احمد حسن", "الثامن اتحاد", "هند جعفر"));
-        studends.add(new StudentData("يوسف الصاوي ", "الثالث ابوبكر", "مني الوليد"));
-        studends.add(new StudentData("يعقوب احمد", "الرابع عمر", "هند جعفر"));
-        studends.add(new StudentData("يعقوب احمد", "الرابع عمر", "هند جعفر"));
-        studends.add(new StudentData("محمد احمد احمد", "الرابع عمر", "هند جعفر"));
-        studends.add(new StudentData("يعقوب احمد", "الرابع عمر", "هند جعفر"));
-        studends.add(new StudentData("يعقوب احمد", "الرابع عمر", "ملاك التاج"));
-        studends.add(new StudentData("يعقوب احمد", "الرابع عمر", "هند جعفر"));
-        studends.add(new StudentData("يوسف يعقوب", "الرابع عمر", "هند جعفر"));
-        studends.add(new StudentData("يعقوب احمد", "الرابع عمر", "اسراء عبد الله"));
-        studends.add(new StudentData("احمد محمد", "الرابع عمر", "هند جعفر"));
-        studends.add(new StudentData("يعقوب احمد", "الرابع عمر", "هند جعفر"));
-        mAdapter = new AllStudentAdapter(studends, getContext());
-        recyclerView.setAdapter(mAdapter);
+//        List<StudentData> studends = new ArrayList();
+//        studends.add(new StudentData("علي احمد", "الخامس عمر", "هند جعفر"));
+//        studends.add(new StudentData(" احمد حسن", "الثامن اتحاد", "هند جعفر"));
+//        studends.add(new StudentData("يوسف الصاوي ", "الثالث ابوبكر", "مني الوليد"));
+//        studends.add(new StudentData("يعقوب احمد", "الرابع عمر", "هند جعفر"));
+//        studends.add(new StudentData("يعقوب احمد", "الرابع عمر", "هند جعفر"));
+//        studends.add(new StudentData("محمد احمد احمد", "الرابع عمر", "هند جعفر"));
+//        studends.add(new StudentData("يعقوب احمد", "الرابع عمر", "هند جعفر"));
+//        studends.add(new StudentData("يعقوب احمد", "الرابع عمر", "ملاك التاج"));
+//        studends.add(new StudentData("يعقوب احمد", "الرابع عمر", "هند جعفر"));
+//        studends.add(new StudentData("يوسف يعقوب", "الرابع عمر", "هند جعفر"));
+//        studends.add(new StudentData("يعقوب احمد", "الرابع عمر", "اسراء عبد الله"));
+//        studends.add(new StudentData("احمد محمد", "الرابع عمر", "هند جعفر"));
+//        studends.add(new StudentData("يعقوب احمد", "الرابع عمر", "هند جعفر"));
+//        mAdapter = new AllStudentAdapter(studends, getContext());
+//        recyclerView.setAdapter(mAdapter);
 
 
-//        NetWorkApis api = ApiClient.getClient(ApiClient.BASE_URL).create(NetWorkApis.class);
-//        String temp =new SessionManger(ctx).getAuthToken();
-//        Call<CansleResaonResponse> loginCall = api.cancleReson(temp);
-//        loginCall.enqueue(new Callback<CansleResaonResponse>() {
-//            @Override
-//            public void onResponse(Call<CansleResaonResponse> call, Response<CansleResaonResponse> response) {
-//                if (response.isSuccessful()) {
-//                    if (response.body().isError()) {
-//                        Utility.showAlertDialog(ctx.getString(R.string.error), response.body().getMessage(), ctx);
-//
-//                    } else {
-//                        mAdapter = new CancleResonAdapter( response.body().getData(),ctx);
-//                        recyclerView.setAdapter(mAdapter);
-//                        dialog.show();
-//
-//                    }
-//                } else {
-//                    Log.i(TAG, response.errorBody().toString());
-//                    Utility.showAlertDialog(ctx.getString(R.string.error), ctx.getString(R.string.servererror), ctx);
-//
-//                }
-//            }
-//
-//            @Override
-//            public void onFailure(Call<CansleResaonResponse> call, Throwable t) {
-//                Utility.showAlertDialog(ctx.getString(R.string.error), t.getMessage(), ctx);
-//                Utility.printLog(TAG, t.getMessage());
-//            }
-//        });
-//
-//    }
+        NetWorkApis api = ApiClient.getClient(ApiClient.BASE_URL).create(NetWorkApis.class);
+        String temp =new SessionManger(getContext()).getSchoolId();
+        Call<getStudentResponse> loginCall = api.getstudent(temp);
+        loginCall.enqueue(new Callback<getStudentResponse>() {
+            @Override
+            public void onResponse(Call<getStudentResponse> call, Response<getStudentResponse> response) {
+                if (response.isSuccessful()) {
+                    if (response.body().isError()) {
+                        Utility.showAlertDialog(getContext().getString(R.string.error), response.body().getMessage(), getContext());
+
+                    } else {
+                        mAdapter = new AllStudentAdapter( response.body().getData(),getContext());
+                        recyclerView.setAdapter(mAdapter);
+
+                    }
+                } else {
+                    Log.i(TAG, response.errorBody().toString());
+                    Utility.showAlertDialog(getContext().getString(R.string.error), getContext().getString(R.string.servererror), getContext());
+
+                }
+            }
+
+            @Override
+            public void onFailure(Call<getStudentResponse> call, Throwable t) {
+                Utility.showAlertDialog(getContext().getString(R.string.error), t.getMessage(), getContext());
+                Utility.printLog(TAG, t.getMessage());
+            }
+        });
+
     }
-}
+    }
+

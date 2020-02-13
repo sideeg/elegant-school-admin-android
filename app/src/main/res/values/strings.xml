@@ -3,4 +3,16 @@
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="send">SEND</string>
+    <string name="uhOh">uhOh</string>
+    <string name="reGrantPermissionMsg">reGrantPermissionMsg</string>
+    <string name="appSetting">appSetting</string>
+    <string name="updaterequest">updaterequest</string>
+    <string name="pleaseupdate">pleaseupdate</string>
+    <string name="close">CLOSE</string>
+    <string name="permission_message">permission_message</string>
+    <string name="ok">OK</string>
+    <string name="cancel">CANCEL</string>
+    <string name="error">error</string>
+    <string name="servererror">server Error</string>
+    <string name="yes">yes</string>
 </resources>

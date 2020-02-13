@@ -42,7 +42,8 @@ public class AllStudentAdapter extends RecyclerView.Adapter<AllStudentAdapter.Vi
     @Override
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, int i) {
         viewHolder.studentName.setText(studentData.get(i).getStudentName());
-        viewHolder.studentSuperVisorName.setText(studentData.get(i).getStudentSupervisorName());
+        if (studentData.get(i).getStudentSupervisor() !=null)
+            viewHolder.studentSuperVisorName.setText(studentData.get(i).getStudentSupervisor().getSupervisorName());
         viewHolder.studentClassName.setText(studentData.get(i).getStudentClassName());
         viewHolder.layout.setOnClickListener(new View.OnClickListener() {
             @Override

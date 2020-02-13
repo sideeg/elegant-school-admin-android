@@ -51,7 +51,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         StrictMode.VmPolicy.Builder builder = new StrictMode.VmPolicy.Builder();
         StrictMode.setVmPolicy(builder.build());
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-//        ft.replace(R.id.container, new HomeFragment());
+        ft.replace(R.id.container, new AllStudentFragment());
         ft.commit();
         drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);

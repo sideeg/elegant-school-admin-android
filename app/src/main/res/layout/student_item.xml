@@ -86,7 +86,7 @@
         android:textSize="15sp"
         android:textStyle="bold"
         android:textColor="#000000"
-        android:text="هند عبد اللطيف  "
+        android:text="ليس لديه مشرف ترحيل!!! "
         />
     <TextView
 

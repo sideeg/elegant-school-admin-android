@@ -28,4 +28,16 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.1'
     implementation 'com.google.android.material:material:1.0.0'
 
+
+
+
+    //retrofit
+    implementation 'com.squareup.okhttp3:logging-interceptor:3.8.0'
+    implementation group: 'com.pubnub', name: 'pubnub-gson', version: '4.27.0'
+    implementation 'com.google.android.play:core:1.6.1'//for new version updater
+    implementation 'com.squareup.retrofit2:retrofit:2.2.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.2.0'
+    //crash reporting
+    implementation 'ch.acra:acra:4.6.2'
+
 }
