@@ -135,7 +135,7 @@
 
 
                 <Spinner
-                    android:id="@+id/spinner_المشرف"
+                    android:id="@+id/spinner_supervisor"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@android:drawable/btn_dropdown"
@@ -145,7 +145,7 @@
             </LinearLayout>
 
             <Button
-                android:id="@+id/send"
+                android:id="@+id/create_student"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/send"

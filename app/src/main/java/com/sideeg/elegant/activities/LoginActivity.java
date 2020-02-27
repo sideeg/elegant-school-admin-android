@@ -40,16 +40,6 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
 
-    public void sign(View view) {
-
-        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-        if (schoolName.getText().toString().equals("admin")&&password.getText().toString().equals("123")){
-
-            intent.putExtra("admin","yes");
-        }
-
-        startActivity(intent);
-    }
 
     private void loginRequest() {
 
@@ -70,7 +60,7 @@ public class LoginActivity extends AppCompatActivity {
                         loadingBar.dismiss();
                         Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                         new SessionManger(response.body().getData(),getBaseContext());
-                        if (response.body().getData().getId() == 10)
+                        if (response.body().getData().getId() == 9)
                             intent.putExtra("admin","yes");
 
                         startActivity(intent);

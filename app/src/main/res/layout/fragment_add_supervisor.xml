@@ -148,7 +148,7 @@
             android:textColor="@color/colorPrimaryDark" />
 
         <Button
-            android:id="@+id/send"
+            android:id="@+id/send_add_supervisor"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/send"

@@ -60,22 +60,6 @@ public class AllStudentFragment extends Fragment {
     }
 
     private void getList() {
-//        List<StudentData> studends = new ArrayList();
-//        studends.add(new StudentData("علي احمد", "الخامس عمر", "هند جعفر"));
-//        studends.add(new StudentData(" احمد حسن", "الثامن اتحاد", "هند جعفر"));
-//        studends.add(new StudentData("يوسف الصاوي ", "الثالث ابوبكر", "مني الوليد"));
-//        studends.add(new StudentData("يعقوب احمد", "الرابع عمر", "هند جعفر"));
-//        studends.add(new StudentData("يعقوب احمد", "الرابع عمر", "هند جعفر"));
-//        studends.add(new StudentData("محمد احمد احمد", "الرابع عمر", "هند جعفر"));
-//        studends.add(new StudentData("يعقوب احمد", "الرابع عمر", "هند جعفر"));
-//        studends.add(new StudentData("يعقوب احمد", "الرابع عمر", "ملاك التاج"));
-//        studends.add(new StudentData("يعقوب احمد", "الرابع عمر", "هند جعفر"));
-//        studends.add(new StudentData("يوسف يعقوب", "الرابع عمر", "هند جعفر"));
-//        studends.add(new StudentData("يعقوب احمد", "الرابع عمر", "اسراء عبد الله"));
-//        studends.add(new StudentData("احمد محمد", "الرابع عمر", "هند جعفر"));
-//        studends.add(new StudentData("يعقوب احمد", "الرابع عمر", "هند جعفر"));
-//        mAdapter = new AllStudentAdapter(studends, getContext());
-//        recyclerView.setAdapter(mAdapter);
 
 
         NetWorkApis api = ApiClient.getClient(ApiClient.BASE_URL).create(NetWorkApis.class);

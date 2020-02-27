@@ -27,7 +27,8 @@ import com.sideeg.elegant.R;
 import com.sideeg.elegant.fragment.AllStudentFragment;
 import com.sideeg.elegant.fragment.AllSuperViserFragment;
 import com.sideeg.elegant.fragment.FragmentAllSchool;
-import com.sideeg.elegant.fragment.SupStudentFragment;
+import com.sideeg.elegant.fragment.NotVerifiedStudentFragment;
+import com.sideeg.elegant.fragment.VerifiedStudentFragment;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -50,9 +51,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         StrictMode.VmPolicy.Builder builder = new StrictMode.VmPolicy.Builder();
         StrictMode.setVmPolicy(builder.build());
-        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-        ft.replace(R.id.container, new AllStudentFragment());
-        ft.commit();
+
         drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
@@ -70,6 +69,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             menu.removeItem(R.id.nav_non_verified_student);
             menu.removeItem(R.id.nav_verified_student);
             menu.add(12,125,100,"المدارس");
+            FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+            fragmentTransaction.replace(R.id.container, new FragmentAllSchool());
+            fragmentTransaction.commit();
+        }else {
+            FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+            ft.replace(R.id.container, new AllStudentFragment());
+            ft.commit();
         }
 
     }
@@ -105,12 +111,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             return true;
 
         }else if (id== R.id.nav_verified_student){
-            ft.replace(R.id.container, new SupStudentFragment());
+            ft.replace(R.id.container, new VerifiedStudentFragment());
             ft.commit();
             return true;
 
         }else if (id== R.id.nav_non_verified_student){
-            ft.replace(R.id.container, new SupStudentFragment());
+            ft.replace(R.id.container, new NotVerifiedStudentFragment());
             ft.commit();
             return true;
 

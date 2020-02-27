@@ -11,7 +11,7 @@ public class SuperVisorData {
     private String supervisorPhone;
 
     @SerializedName("id")
-    private String supervisor_id;
+    private int supervisor_id;
 
     @SerializedName("discission")
     private String discission;
@@ -30,7 +30,7 @@ public class SuperVisorData {
         this.supervisorPhone = supervisorPhone;
     }
 
-    public SuperVisorData(String supervisorName, String supervisorPhone, String supervisor_id, String discission, String schoolid, String password, String api_token) {
+    public SuperVisorData(String supervisorName, String supervisorPhone, int supervisor_id, String discission, String schoolid, String password, String api_token) {
         this.supervisorName = supervisorName;
         this.supervisorPhone = supervisorPhone;
         this.supervisor_id = supervisor_id;
@@ -40,11 +40,11 @@ public class SuperVisorData {
         this.api_token = api_token;
     }
 
-    public String getSupervisor_id() {
+    public int getSupervisor_id() {
         return supervisor_id;
     }
 
-    public void setSupervisor_id(String supervisor_id) {
+    public void setSupervisor_id(int supervisor_id) {
         this.supervisor_id = supervisor_id;
     }
 

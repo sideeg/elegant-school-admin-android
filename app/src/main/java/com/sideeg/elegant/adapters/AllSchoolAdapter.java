@@ -21,11 +21,11 @@ import androidx.recyclerview.widget.RecyclerView;
 public class AllSchoolAdapter extends RecyclerView.Adapter<AllSchoolAdapter.ViewHolder> {
 
 
-    private List<SchoolData> studentData;
+    private List<SchoolData> schoolData;
     private Context context;
 
-    public AllSchoolAdapter(List<SchoolData> studentData, Context context) {
-        this.studentData = studentData;
+    public AllSchoolAdapter(List<SchoolData> schoolDataList, Context context) {
+        this.schoolData = schoolDataList;
         this.context=context;
     }
 
@@ -39,10 +39,10 @@ public class AllSchoolAdapter extends RecyclerView.Adapter<AllSchoolAdapter.View
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, int i) {
-        viewHolder.mangerName.setText(studentData.get(i).getMangerName());
-        viewHolder.mangerPhone.setText(studentData.get(i).getMangerPhone());
-        viewHolder.schoolName.setText(studentData.get(i).getSchoolName());
-        viewHolder.mangerPassword.setText(studentData.get(i).getMangerPassowrd());
+        viewHolder.mangerName.setText(schoolData.get(i).getMangerName());
+        viewHolder.mangerPhone.setText(schoolData.get(i).getMangerPhone());
+        viewHolder.schoolName.setText(schoolData.get(i).getSchoolName());
+        viewHolder.mangerPassword.setText(schoolData.get(i).getMangerPassowrd());
         viewHolder.layout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -56,7 +56,7 @@ public class AllSchoolAdapter extends RecyclerView.Adapter<AllSchoolAdapter.View
 
     @Override
     public int getItemCount() {
-        return studentData.size();
+        return schoolData.size();
     }
 
     class ViewHolder extends RecyclerView.ViewHolder{

@@ -6,59 +6,39 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.sideeg.elegant.NetWorkApis.ApiClient;
 import com.sideeg.elegant.NetWorkApis.NetWorkApis;
 import com.sideeg.elegant.R;
 import com.sideeg.elegant.adapters.AllStudentAdapter;
-import com.sideeg.elegant.adapters.AllSupervisorAdapter;
-import com.sideeg.elegant.model.StudentData;
-import com.sideeg.elegant.model.SuperVisorData;
 import com.sideeg.elegant.model.getStudentResponse;
-import com.sideeg.elegant.model.getSuperVisorsResponse;
 import com.sideeg.elegant.utiltiy.SessionManger;
 import com.sideeg.elegant.utiltiy.Utility;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentActivity;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class AllSuperViserFragment extends Fragment {
+public class NotVerifiedStudentFragment extends Fragment {
 
-
-    private static final String TAG = "AllSuperViserFragment";
+    private static final String TAG = "AllStudentFragment";
     private RecyclerView recyclerView;
     private LinearLayoutManager layoutManager;
-    private AllSupervisorAdapter mAdapter;
+    private AllStudentAdapter mAdapter;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        View root = inflater.inflate(R.layout.fragment_all_supervasior, container, false);
+        View root = inflater.inflate(R.layout.fragment_sup_student, container, false);
 
-        recyclerView = (RecyclerView) root.findViewById(R.id.supervisor_recycler);
+        recyclerView = (RecyclerView) root.findViewById(R.id.sub_student_recycler);
         recyclerView.setHasFixedSize(true);
         layoutManager = new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(layoutManager);
         getList();
 
-        FloatingActionButton actionButton = root.findViewById(R.id.add_supervisor);
-        actionButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                FragmentTransaction ft = ((FragmentActivity) view.getContext()).getSupportFragmentManager().beginTransaction();
-                ft.replace(R.id.container, new AddSuperVisorFragment());
-                ft.commit();
-            }
-        });
         return root;
     }
 
@@ -67,16 +47,16 @@ public class AllSuperViserFragment extends Fragment {
 
         NetWorkApis api = ApiClient.getClient(ApiClient.BASE_URL).create(NetWorkApis.class);
         String temp =new SessionManger(getContext()).getSchoolId();
-        Call<getSuperVisorsResponse> loginCall = api.getsupervisor(temp);
-        loginCall.enqueue(new Callback<getSuperVisorsResponse>() {
+        Call<getStudentResponse> loginCall = api.studentWithNoSupervisor(temp);
+        loginCall.enqueue(new Callback<getStudentResponse>() {
             @Override
-            public void onResponse(Call<getSuperVisorsResponse> call, Response<getSuperVisorsResponse> response) {
+            public void onResponse(Call<getStudentResponse> call, Response<getStudentResponse> response) {
                 if (response.isSuccessful()) {
                     if (response.body().isError()) {
                         Utility.showAlertDialog(getContext().getString(R.string.error), response.body().getMessage(), getContext());
 
                     } else {
-                        mAdapter = new AllSupervisorAdapter( response.body().getData(),getContext());
+                        mAdapter = new AllStudentAdapter( response.body().getData(),getContext());
                         recyclerView.setAdapter(mAdapter);
 
                     }
@@ -88,11 +68,11 @@ public class AllSuperViserFragment extends Fragment {
             }
 
             @Override
-            public void onFailure(Call<getSuperVisorsResponse> call, Throwable t) {
+            public void onFailure(Call<getStudentResponse> call, Throwable t) {
                 Utility.showAlertDialog(getContext().getString(R.string.error), t.getMessage(), getContext());
                 Utility.printLog(TAG, t.getMessage());
             }
         });
 
     }
-    }
+}
