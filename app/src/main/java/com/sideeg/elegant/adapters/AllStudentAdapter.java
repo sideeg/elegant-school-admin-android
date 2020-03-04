@@ -12,6 +12,7 @@ import android.widget.TextView;
 import com.sideeg.elegant.R;
 import com.sideeg.elegant.fragment.StudentDetailsFragment;
 import com.sideeg.elegant.model.StudentData;
+import com.sideeg.elegant.utiltiy.StaticElemaents;
 
 import java.util.List;
 
@@ -40,7 +41,7 @@ public class AllStudentAdapter extends RecyclerView.Adapter<AllStudentAdapter.Vi
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder viewHolder, int i) {
+    public void onBindViewHolder(@NonNull ViewHolder viewHolder, final int i) {
         viewHolder.studentName.setText(studentData.get(i).getStudentName());
         if (studentData.get(i).getStudentSupervisor() !=null)
             viewHolder.studentSuperVisorName.setText(studentData.get(i).getStudentSupervisor().getSupervisorName());
@@ -48,6 +49,7 @@ public class AllStudentAdapter extends RecyclerView.Adapter<AllStudentAdapter.Vi
         viewHolder.layout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                StaticElemaents.setStudentData(studentData.get(i));
                 FragmentTransaction ft =((FragmentActivity) view.getContext()).getSupportFragmentManager().beginTransaction();
                 ft.replace(R.id.container, new StudentDetailsFragment());
                 ft.commit();

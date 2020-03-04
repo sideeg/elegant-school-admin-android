@@ -10,6 +10,7 @@ import android.widget.TextView;
 import com.sideeg.elegant.R;
 import com.sideeg.elegant.fragment.SupervisorDetialsFragment;
 import com.sideeg.elegant.model.SuperVisorData;
+import com.sideeg.elegant.utiltiy.StaticElemaents;
 
 import java.util.List;
 
@@ -21,11 +22,11 @@ import androidx.recyclerview.widget.RecyclerView;
 public class AllSupervisorAdapter extends RecyclerView.Adapter<AllSupervisorAdapter.ViewHolder> {
 
 
-    private List<SuperVisorData> studentData;
+    private List<SuperVisorData> superVisorData;
     private Context context;
 
-    public AllSupervisorAdapter(List<SuperVisorData> studentData, Context context) {
-        this.studentData = studentData;
+    public AllSupervisorAdapter(List<SuperVisorData> superVisorData, Context context) {
+        this.superVisorData = superVisorData;
         this.context=context;
     }
 
@@ -38,13 +39,13 @@ public class AllSupervisorAdapter extends RecyclerView.Adapter<AllSupervisorAdap
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder viewHolder, int i) {
-        viewHolder.supervisorName.setText(studentData.get(i).getSupervisorName());
-        viewHolder.supervisorPhone.setText(studentData.get(i).getSupervisorPhone());
+    public void onBindViewHolder(@NonNull ViewHolder viewHolder, final int i) {
+        viewHolder.supervisorName.setText(superVisorData.get(i).getSupervisorName());
+        viewHolder.supervisorPhone.setText(superVisorData.get(i).getSupervisorPhone());
         viewHolder.layout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                StaticElemaents.setSuperVisorData(superVisorData.get(i));
                 FragmentTransaction ft = ((FragmentActivity) view.getContext()).getSupportFragmentManager().beginTransaction();
                 ft.replace(R.id.container, new SupervisorDetialsFragment());
                 ft.commit();
@@ -57,7 +58,7 @@ public class AllSupervisorAdapter extends RecyclerView.Adapter<AllSupervisorAdap
 
     @Override
     public int getItemCount() {
-        return studentData.size();
+        return superVisorData.size();
     }
 
     class ViewHolder extends RecyclerView.ViewHolder{

@@ -10,6 +10,7 @@ import android.widget.TextView;
 import com.sideeg.elegant.R;
 import com.sideeg.elegant.fragment.SchoolDitalsFragment;
 import com.sideeg.elegant.model.SchoolData;
+import com.sideeg.elegant.utiltiy.StaticElemaents;
 
 import java.util.List;
 
@@ -38,7 +39,7 @@ public class AllSchoolAdapter extends RecyclerView.Adapter<AllSchoolAdapter.View
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder viewHolder, int i) {
+    public void onBindViewHolder(@NonNull ViewHolder viewHolder, final int i) {
         viewHolder.mangerName.setText(schoolData.get(i).getMangerName());
         viewHolder.mangerPhone.setText(schoolData.get(i).getMangerPhone());
         viewHolder.schoolName.setText(schoolData.get(i).getSchoolName());
@@ -46,6 +47,7 @@ public class AllSchoolAdapter extends RecyclerView.Adapter<AllSchoolAdapter.View
         viewHolder.layout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                StaticElemaents.setSchoolData(schoolData.get(i));
                 FragmentTransaction ft =((FragmentActivity) view.getContext()).getSupportFragmentManager().beginTransaction();
                 ft.replace(R.id.container, new SchoolDitalsFragment());
                 ft.commit();

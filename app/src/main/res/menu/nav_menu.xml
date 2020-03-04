@@ -12,6 +12,11 @@
             android:id="@+id/nav_all_student"
             android:icon="@drawable/user"
             android:title="عرض كل الطلاب" />
+
+        <item
+            android:id="@+id/nav_all_parent"
+            android:icon="@drawable/user"
+            android:title="عرض كل اولياء الامور" />
         <item
             android:id="@+id/nav_all_superviser"
             android:icon="@drawable/ic_directions_car_black_24dp"

@@ -16,14 +16,18 @@ import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
 import android.os.StrictMode;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Toast;
 
 import com.google.android.material.navigation.NavigationView;
 import com.sideeg.elegant.R;
+import com.sideeg.elegant.fragment.AllParentsFragment;
 import com.sideeg.elegant.fragment.AllStudentFragment;
 import com.sideeg.elegant.fragment.AllSuperViserFragment;
 import com.sideeg.elegant.fragment.FragmentAllSchool;
@@ -40,6 +44,8 @@ import java.io.OutputStream;
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
 
     DrawerLayout drawer;
+    private NavigationView navigationView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,7 +59,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         StrictMode.setVmPolicy(builder.build());
 
         drawer = findViewById(R.id.drawer_layout);
-        NavigationView navigationView = findViewById(R.id.nav_view);
+        navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
         ActionBarDrawerToggle actionBarDrawerToggle = new ActionBarDrawerToggle(this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         //Setting the actionbarToggle to drawer layout
@@ -68,6 +74,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             menu.removeItem(R.id.nav_all_superviser);
             menu.removeItem(R.id.nav_non_verified_student);
             menu.removeItem(R.id.nav_verified_student);
+            menu.removeItem(R.id.nav_all_parent);
             menu.add(12,125,100,"المدارس");
             FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
             fragmentTransaction.replace(R.id.container, new FragmentAllSchool());
@@ -102,6 +109,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             return true;
         } else if (id== R.id.nav_all_student){
             ft.replace(R.id.container, new AllStudentFragment());
+            ft.commit();
+            return true;
+
+        } else if (id== R.id.nav_all_parent){
+            ft.replace(R.id.container, new AllParentsFragment());
             ft.commit();
             return true;
 
@@ -217,5 +229,36 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+
+    private boolean doubleBackToExitPressedOnce;
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (drawer.isDrawerOpen(navigationView)){
+            drawer.closeDrawer(navigationView);
+            return true;
+        }else {
+        }
+        if (doubleBackToExitPressedOnce) {
+            //super.onBackPressed();
+            //System.exit(0);
+            //finishAndRemoveTask();
+            finishAffinity();
+            //return true;
+
+        }
+        this.doubleBackToExitPressedOnce = true;
+        Toast.makeText(this, "click BACK again to exit", Toast.LENGTH_SHORT).show();
+
+        new Handler().postDelayed(new Runnable() {
+
+            @Override
+            public void run() {
+                doubleBackToExitPressedOnce = false;
+            }
+        }, 1000);
+        return false;
     }
 }

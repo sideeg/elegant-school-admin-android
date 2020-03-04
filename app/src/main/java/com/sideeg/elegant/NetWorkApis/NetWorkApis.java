@@ -61,4 +61,7 @@ public interface NetWorkApis {
     @POST("supervisorsave")
     Call<BaseRespnse> CreateSupervisor(@Query("schoolid") String schoolid,@Query("name")String userName,@Query("discission")String discission,@Query("password") String password,@Query("phone") String supervisorPhone);
 
+    @POST("parentsave")
+    Call<BaseRespnse> CreateParent(@Query("schoolid") String schoolid,@Query("name")String parentName,@Query("password") String password,@Query("phone") String parentPhone);
+
 }

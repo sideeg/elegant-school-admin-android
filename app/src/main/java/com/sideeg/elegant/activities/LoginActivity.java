@@ -63,6 +63,7 @@ public class LoginActivity extends AppCompatActivity {
                         if (response.body().getData().getId() == 9)
                             intent.putExtra("admin","yes");
 
+                        finish();
                         startActivity(intent);
                     }
                 } else {
