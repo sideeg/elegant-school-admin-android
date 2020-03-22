@@ -33,6 +33,7 @@ import com.sideeg.elegant.fragment.AllSuperViserFragment;
 import com.sideeg.elegant.fragment.FragmentAllSchool;
 import com.sideeg.elegant.fragment.NotVerifiedStudentFragment;
 import com.sideeg.elegant.fragment.VerifiedStudentFragment;
+import com.sideeg.elegant.utiltiy.SessionManger;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -137,6 +138,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             return true;
 
         }else if (id== R.id.nav_logout){
+            new SessionManger(this).clearSession();
+            finishAndRemoveTask();
+            startActivity(new Intent(this,LoginActivity.class));
             return true;
 
         }else if (id== R.id.nav_call_us){

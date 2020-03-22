@@ -8,9 +8,12 @@ import retrofit2.Response;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.sideeg.elegant.NetWorkApis.ApiClient;
 import com.sideeg.elegant.NetWorkApis.NetWorkApis;
@@ -60,7 +63,7 @@ public class LoginActivity extends AppCompatActivity {
                         loadingBar.dismiss();
                         Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                         new SessionManger(response.body().getData(),getBaseContext());
-                        if (response.body().getData().getId() == 9)
+                        if (response.body().getData().getId() == 2)
                             intent.putExtra("admin","yes");
 
                         finish();
@@ -84,6 +87,31 @@ public class LoginActivity extends AppCompatActivity {
 
     public interface Communicator {
         void getClicked(String phoneNumber);
+    }
+
+    private boolean doubleBackToExitPressedOnce;
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (doubleBackToExitPressedOnce) {
+            //super.onBackPressed();
+            //System.exit(0);
+            //finishAndRemoveTask();
+            finishAffinity();
+            //return true;
+
+        }
+        this.doubleBackToExitPressedOnce = true;
+        Toast.makeText(this, "click BACK again to exit", Toast.LENGTH_SHORT).show();
+
+        new Handler().postDelayed(new Runnable() {
+
+            @Override
+            public void run() {
+                doubleBackToExitPressedOnce = false;
+            }
+        }, 1000);
+        return false;
     }
 
 

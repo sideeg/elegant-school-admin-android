@@ -1,7 +1,6 @@
 package com.sideeg.elegant.NetWorkApis;
 
 
-
 import com.sideeg.elegant.model.BaseRespnse;
 import com.sideeg.elegant.model.GetParentAndSupervisorRespnse;
 import com.sideeg.elegant.model.LoginResponse;
@@ -55,13 +54,25 @@ public interface NetWorkApis {
     @POST("studentsave")
     Call<BaseRespnse> CreateStudent(@Query("name")String studentName,@Query("className")String className,@Query("schoolid") String schoolid,@Query("supervisor_id") int supervisor_id,@Query("parent_id") int parent_id);
 
+    @PUT()
+    Call<BaseRespnse> updateStudent(@Url String url,@Query("name")String studentName,@Query("className")String className,@Query("schoolid") String schoolid,@Query("supervisor_id") int supervisor_id,@Query("parent_id") int parent_id);
+
     @POST("usersave")
     Call<BaseRespnse> CreateUser(@Query("name")String userName,@Query("schoolname")String schoolname,@Query("password") String password,@Query("mangerPhone") String mangerPhone);
+
+    @PUT()
+    Call<BaseRespnse> updateUser(@Url String url,@Query("name")String userName,@Query("schoolname")String schoolname,@Query("password") String password,@Query("mangerPhone") String mangerPhone);
 
     @POST("supervisorsave")
     Call<BaseRespnse> CreateSupervisor(@Query("schoolid") String schoolid,@Query("name")String userName,@Query("discission")String discission,@Query("password") String password,@Query("phone") String supervisorPhone);
 
+    @PUT()
+    Call<BaseRespnse> updateSupervisor(@Url String url,@Query("schoolid") String schoolid,@Query("name")String userName,@Query("discission")String discission,@Query("password") String password,@Query("phone") String supervisorPhone);
+
     @POST("parentsave")
     Call<BaseRespnse> CreateParent(@Query("schoolid") String schoolid,@Query("name")String parentName,@Query("password") String password,@Query("phone") String parentPhone);
+
+    @PUT()
+    Call<BaseRespnse> updateParent(@Url String url ,@Query("schoolid") String schoolid,@Query("name")String parentName,@Query("password") String password,@Query("phone") String parentPhone);
 
 }

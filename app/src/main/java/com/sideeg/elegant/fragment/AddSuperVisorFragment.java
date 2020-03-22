@@ -34,14 +34,14 @@ public class AddSuperVisorFragment extends Fragment {
         final EditText supervisorName = root.findViewById(R.id.add_supervisor_name);
         final EditText supervisorDirection = root.findViewById(R.id.add_supervisor_direction);
         final EditText supervisorPassword = root.findViewById(R.id.add_supervisor_password);
-        EditText supervisorPhone = root.findViewById(R.id.add_supervisor_phone);
+        final EditText supervisorPhone = root.findViewById(R.id.add_supervisor_phone);
         Button button = root.findViewById(R.id.send_add_supervisor);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 NetWorkApis api = ApiClient.getClient(ApiClient.BASE_URL).create(NetWorkApis.class);
                 String temp =new SessionManger(getContext()).getSchoolId();
-                Call<BaseRespnse> loginCall = api.CreateSupervisor(temp,supervisorName.getText().toString(),supervisorDirection.getText().toString(),supervisorPassword.getText().toString(),supervisorPassword.getText().toString());
+                Call<BaseRespnse> loginCall = api.CreateSupervisor(temp,supervisorName.getText().toString(),supervisorDirection.getText().toString(),supervisorPassword.getText().toString(),supervisorPhone.getText().toString());
                 loginCall.enqueue(new Callback<BaseRespnse>() {
                     @Override
                     public void onResponse(Call<BaseRespnse> call, Response<BaseRespnse> response) {

@@ -12,6 +12,7 @@ import com.sideeg.elegant.fragment.ParentDetailsFragment;
 import com.sideeg.elegant.fragment.SchoolDitalsFragment;
 import com.sideeg.elegant.model.ParentData;
 import com.sideeg.elegant.model.SchoolData;
+import com.sideeg.elegant.utiltiy.StaticElemaents;
 
 import java.util.List;
 
@@ -40,12 +41,13 @@ public class AllParentAdapter extends RecyclerView.Adapter<AllParentAdapter.View
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder viewHolder, int i) {
+    public void onBindViewHolder(@NonNull ViewHolder viewHolder, final int i) {
         viewHolder.parentName.setText(parentData.get(i).getName());
         viewHolder.parentPhone.setText(parentData.get(i).getPhone());
         viewHolder.layout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                StaticElemaents.setParentData(parentData.get(i));
                 FragmentTransaction ft =((FragmentActivity) view.getContext()).getSupportFragmentManager().beginTransaction();
                 ft.replace(R.id.container, new ParentDetailsFragment());
                 ft.commit();
