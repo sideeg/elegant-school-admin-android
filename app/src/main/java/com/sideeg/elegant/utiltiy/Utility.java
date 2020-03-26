@@ -535,9 +535,9 @@ public class Utility {
         dialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
         dialog.getWindow().getAttributes().windowAnimations = R.style.DialogAnimation;
         //setLanguageForDialog(dialog);
-        TextView title_popup = (TextView) dialog.findViewById(R.id.title_popup);
-        TextView text_for_popup = (TextView) dialog.findViewById(R.id.text_for_popup);
-        TextView yes_button = (TextView) dialog.findViewById(R.id.yes_button);
+        TextView title_popup = dialog.findViewById(R.id.title_popup);
+        TextView text_for_popup = dialog.findViewById(R.id.text_for_popup);
+        TextView yes_button = dialog.findViewById(R.id.yes_button);
         /*setTypefaceMuliRegular(context,title_popup);
         setTypefaceMuliRegular(context,text_for_popup);
 		setTypefaceMuliBold(context,yes_button);*/

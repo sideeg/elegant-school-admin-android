@@ -33,7 +33,7 @@ public class VerifiedStudentFragment extends Fragment {
                              ViewGroup container, Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_sup_student, container, false);
 
-        recyclerView = (RecyclerView) root.findViewById(R.id.sub_student_recycler);
+        recyclerView = root.findViewById(R.id.sub_student_recycler);
         recyclerView.setHasFixedSize(true);
         layoutManager = new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(layoutManager);

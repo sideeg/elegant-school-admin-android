@@ -41,7 +41,7 @@ public class AllStudentFragment extends Fragment {
                              ViewGroup container, Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_all_student, container, false);
 
-        recyclerView = (RecyclerView) root.findViewById(R.id.student_recycler);
+        recyclerView = root.findViewById(R.id.student_recycler);
         recyclerView.setHasFixedSize(true);
         layoutManager = new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(layoutManager);

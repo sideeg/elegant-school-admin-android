@@ -50,8 +50,8 @@ public class AddStudentFragment extends Fragment implements AdapterView.OnItemSe
         studentName = root.findViewById(R.id.add_syudent_Name);
          className = root.findViewById(R.id.add_student_class);
 
-        parentSpinner = (Spinner) root.findViewById(R.id.spinner_parent);
-        superVisorSpinner = (Spinner) root.findViewById(R.id.spinner_supervisor);
+        parentSpinner = root.findViewById(R.id.spinner_parent);
+        superVisorSpinner = root.findViewById(R.id.spinner_supervisor);
 
 
 
